@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project Presentation</title>
+  <meta name="description" content="A clean, single-page scrolling site for presenting a project: introduction, framework, guidance, and implementation tools." />
+  <meta property="og:title" content="Project Presentation" />
+  <meta property="og:description" content="Intro, Framework, Guidance, and Implementation Tools" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://<yourusername>.github.io/<repo>" />
+  <link rel="icon" href="favicon.ico" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    /* Optional: active nav underline animation */
+    .nav-link { position: relative; }
+    .nav-link:after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: -6px; height: 2px; width: 0; background: currentColor; transition: width 200ms ease;
+    }
+    .nav-link:hover:after, .nav-link.active:after { width: 100%; }
+    /* Smooth sticky header shadow on scroll */
+    .elevate { box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+  <!-- Header / Navbar -->
+  <header id="top" class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-gray-200">
+    <nav class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
+      <a href="#intro" class="font-bold text-lg tracking-tight">My Project</a>
+      <button id="menuBtn" class="md:hidden p-2 rounded border border-gray-300" aria-label="Toggle Menu">☰</button>
+      <ul id="menu" class="hidden md:flex items-center gap-6">
+        <li><a class="nav-link hover:text-blue-700" href="#framework">Framework</a></li>
+        <li><a class="nav-link hover:text-blue-700" href="#guidance">Guidance</a></li>
+        <li><a class="nav-link hover:text-blue-700" href="#tools">Implementation Tools</a></li>
+        <li>
+          <a href="https://zenodo.org/" target="_blank" class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-300 hover:border-blue-600 hover:text-blue-700 transition">Zenodo ↗</a>
+        </li>
+        <li>
+          <a href="https://mycompetencies.streamlit.app/" target="_blank" class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700 transition">Streamlit App</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero / Intro -->
+  <section id="intro" class="relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 py-24 md:py-32 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">Project Title</h1>
+        <p class="mt-4 text-lg text-gray-600">A concise introduction to your project. Explain the purpose, audience, and value in two or three sentences.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="https://zenodo.org/record/<your_record_id>" target="_blank" class="px-5 py-3 rounded-xl bg-blue-600 text-white hover:bg-blue-700">View on Zenodo</a>
+          <a href="https://mycompetencies.streamlit.app/" target="_blank" class="px-5 py-3 rounded-xl border border-gray-300 hover:border-gray-500">Open Streamlit App</a>
+          <a href="#framework" class="px-5 py-3 rounded-xl border border-transparent hover:border-gray-300">Explore ↓</a>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="aspect-video bg-white rounded-2xl shadow p-6 flex items-center justify-center">
+          <span class="text-gray-400">Add a diagram or cover image here</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Framework Section -->
+  <section id="framework" class="scroll-mt-24">
+    <div class="max-w-6xl mx-auto px-4 py-20">
+      <h2 class="text-3xl font-bold">Framework</h2>
+      <p class="mt-4 text-gray-600 max-w-3xl">Describe your conceptual framework. Use bullets for clarity and an optional schematic.</p>
+      <div class="mt-10 grid md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-2xl p-6 shadow">
+          <h3 class="font-semibold text-lg">Principle 1</h3>
+          <p class="mt-2 text-gray-600">Brief explanation of the first pillar.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow">
+          <h3 class="font-semibold text-lg">Principle 2</h3>
+          <p class="mt-2 text-gray-600">Brief explanation of the second pillar.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow">
+          <h3 class="font-semibold text-lg">Principle 3</h3>
+          <p class="mt-2 text-gray-600">Brief explanation of the third pillar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guidance Section -->
+  <section id="guidance" class="scroll-mt-24 bg-gray-100">
+    <div class="max-w-6xl mx-auto px-4 py-20">
+      <h2 class="text-3xl font-bold">Guidance</h2>
+      <p class="mt-4 text-gray-600 max-w-3xl">Provide practical recommendations, checklists, and steps users should follow.</p>
+      <div class="mt-8 grid md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-2xl p-6 shadow">
+          <h3 class="font-semibold">Checklist</h3>
+          <ul class="mt-3 list-disc list-inside space-y-2 text-gray-700">
+            <li>Do this first</li>
+            <li>Then consider this</li>
+            <li>Validate with these metrics</li>
+          </ul>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow">
+          <h3 class="font-semibold">Best Practices</h3>
+          <ol class="mt-3 list-decimal list-inside space-y-2 text-gray-700">
+            <li>Keep components modular</li>
+            <li>Document assumptions</li>
+            <li>Automate testing where possible</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Implementation Tools Section -->
+  <section id="tools" class="scroll-mt-24">
+    <div class="max-w-6xl mx-auto px-4 py-20">
+      <h2 class="text-3xl font-bold">Implementation Tools</h2>
+      <p class="mt-4 text-gray-600 max-w-3xl">List and link the tools that help users put the framework and guidance into practice.</p>
+
+      <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Tool Card -->
+        <a href="#" target="_blank" class="group bg-white rounded-2xl p-6 shadow hover:shadow-lg transition block">
+          <div class="flex items-center justify-between">
+            <h3 class="font-semibold text-lg">Tool Name</h3>
+            <span aria-hidden="true">↗</span>
+          </div>
+          <p class="mt-2 text-gray-600">Short one-line description.</p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="text-xs px-2 py-1 rounded-full bg-gray-100">tag</span>
+            <span class="text-xs px-2 py-1 rounded-full bg-gray-100">tag</span>
+          </div>
+        </a>
+        <!-- Duplicate card examples -->
+        <a href="#" target="_blank" class="group bg-white rounded-2xl p-6 shadow hover:shadow-lg transition block">
+          <div class="flex items-center justify-between">
+            <h3 class="font-semibold text-lg">Another Tool</h3>
+            <span aria-hidden="true">↗</span>
+          </div>
+          <p class="mt-2 text-gray-600">Short one-line description.</p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="text-xs px-2 py-1 rounded-full bg-gray-100">cli</span>
+            <span class="text-xs px-2 py-1 rounded-full bg-gray-100">docs</span>
+          </div>
+        </a>
+        <a href="#" target="_blank" class="group bg-white rounded-2xl p-6 shadow hover:shadow-lg transition block">
+          <div class="flex items-center justify-between">
+            <h3 class="font-semibold text-lg">Resource Kit</h3>
+            <span aria-hidden="true">↗</span>
+          </div>
+          <p class="mt-2 text-gray-600">Short one-line description.</p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="text-xs px-2 py-1 rounded-full bg-gray-100">template</span>
+            <span class="text-xs px-2 py-1 rounded-full bg-gray-100">guide</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="mt-10">
+        <a href="https://mycompetencies.streamlit.app/" target="_blank" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gray-900 text-white hover:bg-black">Try the Streamlit App ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-200">
+    <div class="max-w-6xl mx-auto px-4 py-10 text-sm text-gray-500 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p>© <span id="year"></span> My Project • Licensed under CC BY 4.0</p>
+      <div class="flex items-center gap-4">
+        <a href="#intro" class="underline">Back to top</a>
+        <a href="https://github.com/<yourusername>/<repo>" target="_blank" class="underline">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const btn = document.getElementById('menuBtn');
+    const menu = document.getElementById('menu');
+    btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+
+    // Elevate header on scroll
+    const header = document.querySelector('header');
+    const elevateOnScroll = () => {
+      if (window.scrollY > 10) header.classList.add('elevate');
+      else header.classList.remove('elevate');
+    };
+    document.addEventListener('scroll', elevateOnScroll);
+
+    // Active link highlighting as sections enter view
+    const sections = ['framework','guidance','tools'];
+    const opts = { rootMargin: '-30% 0px -60% 0px', threshold: 0 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const id = entry.target.getAttribute('id');
+        const link = document.querySelector(`a[href="#${id}"]`);
+        if (link) {
+          if (entry.isIntersecting) link.classList.add('active','text-blue-700');
+          else link.classList.remove('active','text-blue-700');
+        }
+      })
+    }, opts);
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+  </script>
+</body>
+</html>
+
