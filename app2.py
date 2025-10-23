@@ -117,6 +117,8 @@ if st.session_state["show_summary"]:
     result_df.to_csv(buf, index=False)
     csv_bytes = buf.getvalue().encode("utf-8")
 
+    safe_name = (name_id or "anonymous").strip().replace(" ", "_").replace("/", "_")
+    file_name = f"{safe_name}.csv"
     # Always show download button when summary is visible
-    if st.download_button("⬇️ Download CSV", data=csv_bytes, file_name="competency_selections.csv"):
+    if st.download_button("⬇️ Download CSV", data=csv_bytes, file_name=file_name):
         upload_to_gcs_from_bytes(csv_bytes, "competency_selections.csv")
