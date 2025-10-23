@@ -3,6 +3,7 @@ import streamlit as st
 import pandas as pd
 import re
 from google.cloud import storage
+import json
 
 def upload_to_gcs_from_bytes(data_bytes, dest_name):
     creds_info = json.loads(st.secrets["gcp"]["service_account_json"])
