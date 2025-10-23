@@ -5,9 +5,6 @@ import re
 from google.cloud import storage
 
 def upload_to_gcs_from_bytes(data_bytes, dest_name):
-    import io, json, streamlit as st
-    from google.cloud import storage
-
     creds_info = json.loads(st.secrets["gcp"]["service_account_json"])
     client = storage.Client.from_service_account_info(creds_info)
     bucket = client.bucket(st.secrets["gcp"]["bucket_name"])
