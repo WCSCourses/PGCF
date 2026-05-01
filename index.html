@@ -2,207 +2,363 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Project Presentation</title>
-  <meta name="description" content="A clean, single-page scrolling site for presenting a project: introduction, framework, guidance, and implementation tools." />
-  <meta property="og:title" content="Project Presentation" />
-  <meta property="og:description" content="Intro, Framework, Guidance, and Implementation Tools" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pathogen Genomics Competency Framework</title>
+  <meta name="description" content="Overview of the Pathogen Genomics Competency Framework (PGCF): purpose, domains, use cases, and toolkit." />
+  <meta property="og:title" content="Pathogen Genomics Competency Framework" />
+  <meta property="og:description" content="A 360 degree competency framework for pathogen genomics across laboratory science, bioinformatics, epidemiology, and public health." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://<yourusername>.github.io/<repo>" />
-  <link rel="icon" href="favicon.ico" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html { scroll-behavior: smooth; }
-    /* Optional: active nav underline animation */
+    body { background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%); }
+    .glass { backdrop-filter: blur(10px); background: rgba(255,255,255,0.8); }
     .nav-link { position: relative; }
-    .nav-link:after {
+    .nav-link::after {
       content: "";
       position: absolute;
-      left: 0; bottom: -6px; height: 2px; width: 0; background: currentColor; transition: width 200ms ease;
+      left: 0;
+      bottom: -0.35rem;
+      width: 0;
+      height: 2px;
+      background: currentColor;
+      transition: width 0.2s ease;
     }
-    .nav-link:hover:after, .nav-link.active:after { width: 100%; }
-    /* Smooth sticky header shadow on scroll */
-    .elevate { box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); }
+    .nav-link:hover::after,
+    .nav-link.active::after { width: 100%; }
+    .hero-grid {
+      background-image:
+        radial-gradient(circle at 1px 1px, rgba(14, 116, 144, 0.12) 1px, transparent 0);
+      background-size: 28px 28px;
+    }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased">
-  <!-- Header / Navbar -->
-  <header id="top" class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-gray-200">
-    <nav class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
-      <a href="#intro" class="font-bold text-lg tracking-tight">PGCF</a>
-      <button id="menuBtn" class="md:hidden p-2 rounded border border-gray-300" aria-label="Toggle Menu">☰</button>
-      <ul id="menu" class="hidden md:flex items-center gap-6">
-        <li><a class="nav-link hover:text-blue-700" href="#framework">Framework</a></li>
-        <li><a class="nav-link hover:text-blue-700" href="#guidance">Guidance</a></li>
-        <li><a class="nav-link hover:text-blue-700" href="#tools">Implementation Tools</a></li>
-        <li>
-          <a href="https://zenodo.org/" target="_blank" class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-300 hover:border-blue-600 hover:text-blue-700 transition">Zenodo ↗</a>
-        </li>
-        <li>
-          <a href="https://mycompetencies.streamlit.app/" target="_blank" class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700 transition">Try the Framework</a>
-        </li>
+<body class="text-slate-800 antialiased">
+  <header id="top" class="sticky top-0 z-50 border-b border-slate-200/80 glass">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      <a href="#overview" class="flex items-center gap-3">
+        <div class="h-10 w-10 rounded-xl bg-cyan-700 text-white grid place-items-center font-bold shadow">PG</div>
+        <div>
+          <div class="font-semibold tracking-tight">PGCF</div>
+          <div class="text-xs text-slate-500">Pathogen Genomics Competency Framework</div>
+        </div>
+      </a>
+
+      <button id="menuBtn" class="md:hidden inline-flex items-center justify-center rounded-lg border border-slate-300 px-3 py-2 text-sm" aria-label="Toggle navigation">
+        Menu
+      </button>
+
+      <ul id="menu" class="hidden md:flex items-center gap-6 text-sm font-medium">
+        <li><a class="nav-link hover:text-cyan-700" href="#overview">Overview</a></li>
+        <li><a class="nav-link hover:text-cyan-700" href="#domains">Domains</a></li>
+        <li><a class="nav-link hover:text-cyan-700" href="#use">How to use it</a></li>
+        <li><a class="nav-link hover:text-cyan-700" href="#toolkit">Toolkit</a></li>
+        <li><a class="inline-flex items-center rounded-xl bg-cyan-700 px-4 py-2 text-white hover:bg-cyan-800 transition" href="https://mycompetencies.streamlit.app/" target="_blank" rel="noreferrer">Try the app</a></li>
       </ul>
     </nav>
+
+    <div id="mobileMenu" class="md:hidden hidden border-t border-slate-200 bg-white">
+      <div class="px-4 py-3 flex flex-col gap-3 text-sm font-medium">
+        <a class="hover:text-cyan-700" href="#overview">Overview</a>
+        <a class="hover:text-cyan-700" href="#domains">Domains</a>
+        <a class="hover:text-cyan-700" href="#use">How to use it</a>
+        <a class="hover:text-cyan-700" href="#toolkit">Toolkit</a>
+        <a class="inline-flex w-fit items-center rounded-xl bg-cyan-700 px-4 py-2 text-white hover:bg-cyan-800 transition" href="https://mycompetencies.streamlit.app/" target="_blank" rel="noreferrer">Try the app</a>
+      </div>
+    </div>
   </header>
 
-  <!-- Hero / Intro -->
-  <section id="intro" class="relative overflow-hidden">
-    <div class="max-w-6xl mx-auto px-4 py-24 md:py-32 grid md:grid-cols-2 gap-10 items-center">
-      <div>
-        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">Pathogen Genomics Competency Framework</h1>
-        <p class="mt-4 text-lg text-gray-600">A Comprehensive 360° Competency Framework for Pathogen Genomics: Integrating Science, Public Health, and Systems Skills.</p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href="https://zenodo.org/uploads/16760482?token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6IjdmYTA3OTZlLWM1MjAtNDk3Ny05MzRjLTQ0ZDlkMDFhZDAyNSIsImRhdGEiOnt9LCJyYW5kb20iOiJmYjcyZjE2ZGY2MTg2YzNkZWIyNTg1ZDliM2M2ODZhMyJ9.QaDJ1idS_Tj3ydw1K5p4ESpBnbhTAEzBWFGjmhEaf9VU81u7DiTkE8UQvC1PJif4sxh8Br84G9i1-rLYA9sADA>" target="_blank" class="px-5 py-3 rounded-xl bg-blue-600 text-white hover:bg-blue-700">Competencies and KSA database</a>
-          <a href="https://mycompetencies.streamlit.app/" target="_blank" class="px-5 py-3 rounded-xl border border-gray-300 hover:border-gray-500">Try the framework NOW</a>
-          <a href="#framework" class="px-5 py-3 rounded-xl border border-transparent hover:border-gray-300">Explore ↓</a>
-        </div>
-      </div>
-      <div class="relative">
-        <div class="aspect-video bg-white rounded-2xl shadow p-6 flex items-center justify-center">
-          <span class="text-gray-400"> <img
-  src="PGCF image.png"
-  alt="Visual header for Wellcome Connecting Science—pathogen genomics"
-  width="600"
-  height="400"
-  style="max-width:100%;height:auto;border-radius:8px"/> </span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Framework Section -->
-  <section id="framework" class="scroll-mt-24">
-    <div class="max-w-6xl mx-auto px-4 py-20">
-      <h2 class="text-3xl font-bold">Framework</h2>
-      <p class="mt-4 text-gray-600 max-w-3xl">Describe your conceptual framework. Use bullets for clarity and an optional schematic.</p>
-      <div class="mt-10 grid md:grid-cols-3 gap-6">
-        <div class="bg-white rounded-2xl p-6 shadow">
-          <h3 class="font-semibold text-lg">Principle 1</h3>
-          <p class="mt-2 text-gray-600">Brief explanation of the first pillar.</p>
-        </div>
-        <div class="bg-white rounded-2xl p-6 shadow">
-          <h3 class="font-semibold text-lg">Principle 2</h3>
-          <p class="mt-2 text-gray-600">Brief explanation of the second pillar.</p>
-        </div>
-        <div class="bg-white rounded-2xl p-6 shadow">
-          <h3 class="font-semibold text-lg">Principle 3</h3>
-          <p class="mt-2 text-gray-600">Brief explanation of the third pillar.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Guidance Section -->
-  <section id="guidance" class="scroll-mt-24 bg-gray-100">
-    <div class="max-w-6xl mx-auto px-4 py-20">
-      <h2 class="text-3xl font-bold">Guidance</h2>
-      <p class="mt-4 text-gray-600 max-w-3xl">Provide practical recommendations, checklists, and steps users should follow.</p>
-      <div class="mt-8 grid md:grid-cols-2 gap-6">
-        <div class="bg-white rounded-2xl p-6 shadow">
-          <h3 class="font-semibold">Checklist</h3>
-          <ul class="mt-3 list-disc list-inside space-y-2 text-gray-700">
-            <li>Do this first</li>
-            <li>Then consider this</li>
-            <li>Validate with these metrics</li>
-          </ul>
-        </div>
-        <div class="bg-white rounded-2xl p-6 shadow">
-          <h3 class="font-semibold">Best Practices</h3>
-          <ol class="mt-3 list-decimal list-inside space-y-2 text-gray-700">
-            <li>Keep components modular</li>
-            <li>Document assumptions</li>
-            <li>Automate testing where possible</li>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Implementation Tools Section -->
-  <section id="tools" class="scroll-mt-24">
-    <div class="max-w-6xl mx-auto px-4 py-20">
-      <h2 class="text-3xl font-bold">Implementation Tools</h2>
-      <p class="mt-4 text-gray-600 max-w-3xl">Tools and turorials to put the framework and guidance into practice.</p>
-
-      <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Tool Card -->
-        <a href="#" target="_blank" class="group bg-white rounded-2xl p-6 shadow hover:shadow-lg transition block">
-          <div class="flex items-center justify-between">
-            <h3 class="font-semibold text-lg">Assess your competencies</h3>
-            <span aria-hidden="true">↗</span>
+  <main>
+    <section id="overview" class="hero-grid overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 grid lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
+        <div>
+          <span class="inline-flex items-center rounded-full border border-cyan-200 bg-cyan-50 px-3 py-1 text-sm font-medium text-cyan-800">A 360 degree framework for pathogen genomics</span>
+          <h1 class="mt-6 text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
+            Build, map, and assess workforce capability across the full pathogen genomics pipeline.
+          </h1>
+          <p class="mt-6 max-w-3xl text-lg leading-8 text-slate-600">
+            The Pathogen Genomics Competency Framework supports educators, curriculum developers, workforce planners, and learners by organising pathogen genomics into a practical structure that spans laboratory science, bioinformatics, epidemiology, clinical interpretation, and public health application.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#domains" class="rounded-2xl bg-slate-900 px-5 py-3 text-white font-medium hover:bg-black transition">Explore the domains</a>
+            <a href="#toolkit" class="rounded-2xl border border-slate-300 px-5 py-3 font-medium hover:border-slate-500 transition">View the toolkit</a>
           </div>
-          <p class="mt-2 text-gray-600">https://mycompetencies.streamlit.app/</p>
-        </a>
-        <!-- Duplicate card examples -->
-        <a href="#" target="_blank" class="group bg-white rounded-2xl p-6 shadow hover:shadow-lg transition block">
-          <div class="flex items-center justify-between">
-            <h3 class="font-semibold text-lg">Compare multiple assessments of competencies</h3>
-            <span aria-hidden="true">↗</span>
-          </div>
-          <p class="mt-2 text-gray-600">https://mycompetencies-compare.streamlit.app/</p>
-        </a>
-        <a href="#" target="_blank" class="group bg-white rounded-2xl p-6 shadow hover:shadow-lg transition block">
-          <div class="flex items-center justify-between">
-            <h3 class="font-semibold text-lg">How to use video</h3>
-            <span aria-hidden="true">↗</span>
-          </div>
-          <p class="mt-2 text-gray-600">https://www.youtube.com/watch?v=gRlM42GYQgQ&ab_channel=MonicaIAbrudan</p>
-        </a>
-      </div>
+          <dl class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
+              <dt class="text-sm text-slate-500">Domains</dt>
+              <dd class="mt-1 text-3xl font-bold text-slate-900">10</dd>
+            </div>
+            <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
+              <dt class="text-sm text-slate-500">Topics</dt>
+              <dd class="mt-1 text-3xl font-bold text-slate-900">60</dd>
+            </div>
+            <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
+              <dt class="text-sm text-slate-500">Competencies</dt>
+              <dd class="mt-1 text-3xl font-bold text-slate-900">360</dd>
+            </div>
+            <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
+              <dt class="text-sm text-slate-500">Bloom levels</dt>
+              <dd class="mt-1 text-3xl font-bold text-slate-900">6</dd>
+            </div>
+          </dl>
+        </div>
 
-      <div class="mt-10">
-        <a href="https://mycompetencies.streamlit.app/" target="_blank" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gray-900 text-white hover:bg-black">Try the Framework ↗</a>
+        <div class="relative">
+          <div class="rounded-3xl bg-slate-900 p-8 text-white shadow-2xl">
+            <p class="text-sm uppercase tracking-[0.18em] text-cyan-300">Why it matters</p>
+            <h2 class="mt-3 text-2xl font-bold leading-tight">Pathogen genomics needs more than sequencing expertise.</h2>
+            <p class="mt-4 text-slate-300 leading-7">
+              Effective implementation depends on connected capabilities across sample handling, laboratory workflows, genomic analysis, data interpretation, ethics, communication, training, and programme management.
+            </p>
+            <div class="mt-8 grid gap-4">
+              <div class="rounded-2xl bg-white/10 p-4 ring-1 ring-white/10">
+                <h3 class="font-semibold">For curriculum design</h3>
+                <p class="mt-1 text-sm text-slate-300">Map learning outcomes, identify gaps, and align teaching and assessment.</p>
+              </div>
+              <div class="rounded-2xl bg-white/10 p-4 ring-1 ring-white/10">
+                <h3 class="font-semibold">For workforce planning</h3>
+                <p class="mt-1 text-sm text-slate-300">Link competencies to roles, capability reviews, and staff development priorities.</p>
+              </div>
+              <div class="rounded-2xl bg-white/10 p-4 ring-1 ring-white/10">
+                <h3 class="font-semibold">For learners and teams</h3>
+                <p class="mt-1 text-sm text-slate-300">Support reflection, target-setting, and structured professional development.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer class="border-t border-gray-200">
-    <div class="max-w-6xl mx-auto px-4 py-10 text-sm text-gray-500 flex flex-col md:flex-row items-center justify-between gap-4">
-      <p>© <span id="year"></span> Wellcome Connecting Science • Licensed under CC BY 4.0</p>
-      <div class="flex items-center gap-4">
-        <a href="#intro" class="underline">Back to top</a>
-        <a href="https://github.com/WCSCourses/PGCF" target="_blank" class="underline">GitHub</a>
+    <section class="py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="text-sm font-semibold uppercase tracking-[0.16em] text-cyan-700">At a glance</p>
+          <h2 class="mt-3 text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">A framework designed for real-world use</h2>
+          <p class="mt-4 text-lg text-slate-600 leading-8">
+            The PGCF is intended as an evolving, flexible framework rather than a prescriptive checklist. It helps users select the most relevant domains and competencies for their setting, then apply them to curriculum review, training design, self-assessment, or workforce development.
+          </p>
+        </div>
+        <div class="mt-10 grid lg:grid-cols-3 gap-6">
+          <article class="rounded-3xl bg-white p-7 shadow-sm ring-1 ring-slate-200">
+            <h3 class="text-xl font-semibold text-slate-900">Breadth across the pipeline</h3>
+            <p class="mt-3 text-slate-600 leading-7">Covers the continuum from genomes and microbiology to sample preparation, data generation, analysis, interpretation, and decision-making.</p>
+          </article>
+          <article class="rounded-3xl bg-white p-7 shadow-sm ring-1 ring-slate-200">
+            <h3 class="text-xl font-semibold text-slate-900">Depth through structured progression</h3>
+            <p class="mt-3 text-slate-600 leading-7">Each topic includes six Bloom-aligned competency statements, enabling progression from foundational understanding to advanced evaluation and creation.</p>
+          </article>
+          <article class="rounded-3xl bg-white p-7 shadow-sm ring-1 ring-slate-200">
+            <h3 class="text-xl font-semibold text-slate-900">Cross-cutting implementation skills</h3>
+            <p class="mt-3 text-slate-600 leading-7">Includes ethics, communication, data science, learning and training, and capacity development to support adoption beyond technical workflows alone.</p>
+          </article>
+        </div>
       </div>
+    </section>
+
+    <section id="domains" class="py-20 bg-slate-50 border-y border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="text-sm font-semibold uppercase tracking-[0.16em] text-cyan-700">Framework structure</p>
+          <h2 class="mt-3 text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">Ten domains covering technical, applied, and cross-cutting capability</h2>
+          <p class="mt-4 text-lg text-slate-600 leading-8">
+            The framework organises 60 topics into domains that can be used together or selected according to role, course, or institutional need.
+          </p>
+        </div>
+
+        <div class="mt-12 grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
+          <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+            <div class="text-sm font-semibold text-cyan-700">Domain 1</div>
+            <h3 class="mt-2 text-xl font-semibold">Genomes and Microbiology</h3>
+            <p class="mt-3 text-slate-600 leading-7">Foundational biology, pathogen diversity, microbiology concepts, and the scientific context needed to interpret genomic information.</p>
+          </article>
+          <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+            <div class="text-sm font-semibold text-cyan-700">Domain 2</div>
+            <h3 class="mt-2 text-xl font-semibold">Sample Preparation and Processing</h3>
+            <p class="mt-3 text-slate-600 leading-7">Specimen collection, handling, pre-analytical considerations, and preparation steps that underpin reliable downstream analysis.</p>
+          </article>
+          <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+            <div class="text-sm font-semibold text-cyan-700">Domain 3</div>
+            <h3 class="mt-2 text-xl font-semibold">Sample Analysis and Data Generation</h3>
+            <p class="mt-3 text-slate-600 leading-7">Sequencing technologies, laboratory workflows, quality control, and generation of usable pathogen genomics data.</p>
+          </article>
+          <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+            <div class="text-sm font-semibold text-cyan-700">Domain 4</div>
+            <h3 class="mt-2 text-xl font-semibold">Genomic Data Workflows, Analysis and Integration</h3>
+            <p class="mt-3 text-slate-600 leading-7">Core bioinformatics workflows, processing pipelines, integration of multiple data types, and reproducible analytical practice.</p>
+          </article>
+          <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+            <div class="text-sm font-semibold text-cyan-700">Domain 5</div>
+            <h3 class="mt-2 text-xl font-semibold">Data Interpretation</h3>
+            <p class="mt-3 text-slate-600 leading-7">Interpretation of genomic outputs, contextualisation with epidemiological evidence, and translation into meaningful conclusions.</p>
+          </article>
+          <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+            <div class="text-sm font-semibold text-cyan-700">Domain 6</div>
+            <h3 class="mt-2 text-xl font-semibold">Clinical and Public Health Decision-Making</h3>
+            <p class="mt-3 text-slate-600 leading-7">Application of pathogen genomics to surveillance, outbreak response, infection control, and decision support in health systems.</p>
+          </article>
+          <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+            <div class="text-sm font-semibold text-cyan-700">Domain 7</div>
+            <h3 class="mt-2 text-xl font-semibold">Data Science</h3>
+            <p class="mt-3 text-slate-600 leading-7">Data stewardship, management, visualisation, ethics, governance, and computational practices that support trustworthy use of data.</p>
+          </article>
+          <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+            <div class="text-sm font-semibold text-cyan-700">Domain 8</div>
+            <h3 class="mt-2 text-xl font-semibold">Integrated Skills</h3>
+            <p class="mt-3 text-slate-600 leading-7">Communication, interdisciplinary collaboration, leadership, and professional capabilities needed to embed genomics into practice.</p>
+          </article>
+          <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+            <div class="text-sm font-semibold text-cyan-700">Domain 9</div>
+            <h3 class="mt-2 text-xl font-semibold">Learning and Training</h3>
+            <p class="mt-3 text-slate-600 leading-7">Teaching, facilitation, mentoring, and support for developing learning pathways in pathogen genomics.</p>
+          </article>
+          <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200 sm:col-span-2 xl:col-span-3">
+            <div class="text-sm font-semibold text-cyan-700">Domain 10</div>
+            <h3 class="mt-2 text-xl font-semibold">Capacity Development and Programme Management</h3>
+            <p class="mt-3 text-slate-600 leading-7">Planning, implementation, evaluation, coordination, and long-term development of programmes that strengthen genomics capability at institutional or national level.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="use" class="py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 items-start">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.16em] text-cyan-700">How to use it</p>
+            <h2 class="mt-3 text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">From gap analysis to workforce planning</h2>
+            <p class="mt-4 text-lg text-slate-600 leading-8">
+              The user guide describes several flexible ways to apply the PGCF. Users can work at the level of topics, competencies, courses, job roles, or organisational capability planning.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+              <h3 class="text-xl font-semibold">Gap analysis</h3>
+              <p class="mt-3 text-slate-600 leading-7">Review an existing curriculum or programme to see which topics are fully covered, partially covered, or missing.</p>
+            </article>
+            <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+              <h3 class="text-xl font-semibold">Curriculum design</h3>
+              <p class="mt-3 text-slate-600 leading-7">Select relevant domains and competencies, define learning outcomes, and match teaching and assessment methods to Bloom’s levels.</p>
+            </article>
+            <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+              <h3 class="text-xl font-semibold">Module mapping</h3>
+              <p class="mt-3 text-slate-600 leading-7">Align course modules and learning outcomes directly to PGCF competencies for transparent coverage and progression.</p>
+            </article>
+            <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+              <h3 class="text-xl font-semibold">Proficiency profiles</h3>
+              <p class="mt-3 text-slate-600 leading-7">Use structured self or supervisor review to compare current and expected levels, then identify training priorities.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="mt-10 rounded-3xl bg-slate-900 p-8 lg:p-10 text-white">
+          <div class="grid lg:grid-cols-[1fr_1fr] gap-8 items-start">
+            <div>
+              <h3 class="text-2xl font-bold">Who is it for?</h3>
+              <p class="mt-3 text-slate-300 leading-7">The framework is especially useful for educators, training developers, curriculum designers, workforce planners, public health agencies, and learners working across pathogen genomics.</p>
+            </div>
+            <ul class="grid sm:grid-cols-2 gap-4 text-sm">
+              <li class="rounded-2xl bg-white/10 p-4 ring-1 ring-white/10">Laboratory scientists and biomedical scientists</li>
+              <li class="rounded-2xl bg-white/10 p-4 ring-1 ring-white/10">Bioinformaticians and data specialists</li>
+              <li class="rounded-2xl bg-white/10 p-4 ring-1 ring-white/10">Epidemiologists and public health teams</li>
+              <li class="rounded-2xl bg-white/10 p-4 ring-1 ring-white/10">Clinical scientists, consultants, and researchers</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="toolkit" class="py-20 bg-slate-50 border-y border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="text-sm font-semibold uppercase tracking-[0.16em] text-cyan-700">Toolkit</p>
+          <h2 class="mt-3 text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">Digital tools and supporting resources</h2>
+          <p class="mt-4 text-lg text-slate-600 leading-8">The PGCF is supported by practical tools designed to make implementation easier across different contexts.</p>
+        </div>
+
+        <div class="mt-12 grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+          <a href="https://mycompetencies.streamlit.app/" target="_blank" rel="noreferrer" class="group rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200 hover:shadow-md transition">
+            <div class="flex items-center justify-between">
+              <h3 class="text-lg font-semibold">Competency app</h3>
+              <span aria-hidden="true">↗</span>
+            </div>
+            <p class="mt-3 text-slate-600 leading-7">Browse topics and competencies through the digital interface and support structured reflection.</p>
+          </a>
+          <a href="https://github.com/monicaiabrudan/competencies" target="_blank" rel="noreferrer" class="group rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200 hover:shadow-md transition">
+            <div class="flex items-center justify-between">
+              <h3 class="text-lg font-semibold">Code repository</h3>
+              <span aria-hidden="true">↗</span>
+            </div>
+            <p class="mt-3 text-slate-600 leading-7">Access the underlying implementation resources and project code related to the competencies tools.</p>
+          </a>
+          <a href="https://wcscourses.github.io/PGCF/" target="_blank" rel="noreferrer" class="group rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200 hover:shadow-md transition">
+            <div class="flex items-center justify-between">
+              <h3 class="text-lg font-semibold">Framework website</h3>
+              <span aria-hidden="true">↗</span>
+            </div>
+            <p class="mt-3 text-slate-600 leading-7">A public-facing home for the framework, its description, and related implementation materials.</p>
+          </a>
+          <a href="https://zenodo.org/records/15675982" target="_blank" rel="noreferrer" class="group rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200 hover:shadow-md transition">
+            <div class="flex items-center justify-between">
+              <h3 class="text-lg font-semibold">Supporting record</h3>
+              <span aria-hidden="true">↗</span>
+            </div>
+            <p class="mt-3 text-slate-600 leading-7">Reference material connected to the wider T3Connect work that informed development of the framework.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="rounded-[2rem] bg-gradient-to-r from-cyan-700 to-sky-800 p-10 text-white shadow-xl">
+          <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 items-center">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-[0.16em] text-cyan-100">Next step</p>
+              <h2 class="mt-3 text-3xl sm:text-4xl font-bold tracking-tight">Use the framework to support learning, planning, and implementation.</h2>
+              <p class="mt-4 text-cyan-50 leading-8 max-w-2xl">
+                Start with the domains most relevant to your audience, map them to roles or learning outcomes, and use the digital tools to identify strengths and training needs.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-3 lg:justify-end">
+              <a href="https://mycompetencies.streamlit.app/" target="_blank" rel="noreferrer" class="rounded-2xl bg-white px-5 py-3 font-medium text-slate-900 hover:bg-slate-100 transition">Open the app</a>
+              <a href="#top" class="rounded-2xl border border-white/40 px-5 py-3 font-medium text-white hover:bg-white/10 transition">Back to top</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row gap-3 md:items-center md:justify-between text-sm text-slate-500">
+      <p>Pathogen Genomics Competency Framework overview page.</p>
+      <p>Built as a single-page resource for presenting the framework, its structure, and its toolkit.</p>
     </div>
   </footer>
 
-  <!-- Scripts -->
   <script>
-    // Set current year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
 
-    // Mobile menu toggle
-    const btn = document.getElementById('menuBtn');
-    const menu = document.getElementById('menu');
-    btn.addEventListener('click', () => menu.classList.toggle('hidden'));
-
-    // Elevate header on scroll
-    const header = document.querySelector('header');
-    const elevateOnScroll = () => {
-      if (window.scrollY > 10) header.classList.add('elevate');
-      else header.classList.remove('elevate');
-    };
-    document.addEventListener('scroll', elevateOnScroll);
-
-    // Active link highlighting as sections enter view
-    const sections = ['framework','guidance','tools'];
-    const opts = { rootMargin: '-30% 0px -60% 0px', threshold: 0 };
+    const sections = ['overview', 'domains', 'use', 'toolkit'];
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        const id = entry.target.getAttribute('id');
-        const link = document.querySelector(`a[href="#${id}"]`);
-        if (link) {
-          if (entry.isIntersecting) link.classList.add('active','text-blue-700');
-          else link.classList.remove('active','text-blue-700');
-        }
-      })
-    }, opts);
+        const id = entry.target.id;
+        document.querySelectorAll(`a[href="#${id}"]`).forEach(link => {
+          link.classList.toggle('active', entry.isIntersecting);
+          link.classList.toggle('text-cyan-700', entry.isIntersecting);
+        });
+      });
+    }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
+
     sections.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
+      const section = document.getElementById(id);
+      if (section) observer.observe(section);
     });
   </script>
 </body>
 </html>
-
