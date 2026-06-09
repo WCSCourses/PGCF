@@ -4,15 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pathogen Genomics Competency Framework</title>
-  <meta name="description" content="Overview of the Pathogen Genomics Competency Framework (PGCF): purpose, domains, use cases, and toolkit." />
+  <meta name="description" content="Overview of the Pathogen Genomics Competency Framework (PGCF): purpose, domains, use cases, toolkit, and implementation guide for institutions." />
   <meta property="og:title" content="Pathogen Genomics Competency Framework" />
-  <meta property="og:description" content="A 360 degree competency framework for pathogen genomics across laboratory science, bioinformatics, epidemiology, and public health." />
+  <meta property="og:description" content="A 360-degree competency framework and implementation model for pathogen genomics workforce assessment." />
   <meta property="og:type" content="website" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html { scroll-behavior: smooth; }
     body { background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%); }
-    .glass { backdrop-filter: blur(10px); background: rgba(255,255,255,0.8); }
+    .glass { backdrop-filter: blur(10px); background: rgba(255,255,255,0.86); }
     .nav-link { position: relative; }
     .nav-link::after {
       content: "";
@@ -31,12 +31,13 @@
         radial-gradient(circle at 1px 1px, rgba(14, 116, 144, 0.12) 1px, transparent 0);
       background-size: 28px 28px;
     }
+    pre { white-space: pre-wrap; word-break: break-word; }
   </style>
 </head>
 <body class="text-slate-800 antialiased">
   <header id="top" class="sticky top-0 z-50 border-b border-slate-200/80 glass">
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
-      <a href="#overview" class="flex items-center gap-3">
+      <a href="#overview" class="flex items-center gap-3" aria-label="PGCF home">
         <div class="h-10 w-10 rounded-xl bg-cyan-700 text-white grid place-items-center font-bold shadow">PG</div>
         <div>
           <div class="font-semibold tracking-tight">PGCF</div>
@@ -53,6 +54,7 @@
         <li><a class="nav-link hover:text-cyan-700" href="#domains">Domains</a></li>
         <li><a class="nav-link hover:text-cyan-700" href="#use">How to use it</a></li>
         <li><a class="nav-link hover:text-cyan-700" href="#toolkit">Toolkit</a></li>
+        <li><a class="nav-link hover:text-cyan-700" href="#implement">Implement</a></li>
         <li><a class="inline-flex items-center rounded-xl bg-cyan-700 px-4 py-2 text-white hover:bg-cyan-800 transition" href="https://competencies-wcs.streamlit.app/" target="_blank" rel="noreferrer">Try the app</a></li>
       </ul>
     </nav>
@@ -63,6 +65,7 @@
         <a class="hover:text-cyan-700" href="#domains">Domains</a>
         <a class="hover:text-cyan-700" href="#use">How to use it</a>
         <a class="hover:text-cyan-700" href="#toolkit">Toolkit</a>
+        <a class="hover:text-cyan-700" href="#implement">Implement</a>
         <a class="inline-flex w-fit items-center rounded-xl bg-cyan-700 px-4 py-2 text-white hover:bg-cyan-800 transition" href="https://competencies-wcs.streamlit.app/" target="_blank" rel="noreferrer">Try the app</a>
       </div>
     </div>
@@ -72,7 +75,7 @@
     <section id="overview" class="hero-grid overflow-hidden">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 grid lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
         <div>
-          <span class="inline-flex items-center rounded-full border border-cyan-200 bg-cyan-50 px-3 py-1 text-sm font-medium text-cyan-800">A 360 degree framework for pathogen genomics</span>
+          <span class="inline-flex items-center rounded-full border border-cyan-200 bg-cyan-50 px-3 py-1 text-sm font-medium text-cyan-800">A 360-degree framework for pathogen genomics</span>
           <h1 class="mt-6 text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
             Build, map, and assess workforce capability across the full pathogen genomics pipeline.
           </h1>
@@ -81,7 +84,7 @@
           </p>
           <div class="mt-8 flex flex-wrap gap-3">
             <a href="#domains" class="rounded-2xl bg-slate-900 px-5 py-3 text-white font-medium hover:bg-black transition">Explore the domains</a>
-            <a href="#toolkit" class="rounded-2xl border border-slate-300 px-5 py-3 font-medium hover:border-slate-500 transition">View the toolkit</a>
+            <a href="#implement" class="rounded-2xl border border-slate-300 px-5 py-3 font-medium hover:border-slate-500 transition">Implement the model</a>
           </div>
           <dl class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4">
             <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
@@ -138,6 +141,7 @@
             The PGCF is intended as an evolving, flexible framework rather than a prescriptive checklist. It helps users select the most relevant domains and competencies for their setting, then apply them to curriculum review, training design, self-assessment, or workforce development.
           </p>
         </div>
+
         <div class="mt-10 grid lg:grid-cols-3 gap-6">
           <article class="rounded-3xl bg-white p-7 shadow-sm ring-1 ring-slate-200">
             <h3 class="text-xl font-semibold text-slate-900">Breadth across the pipeline</h3>
@@ -230,7 +234,6 @@
               The user guide describes several flexible ways to apply the PGCF. Users can work at the level of topics, competencies, courses, job roles, or organisational capability planning.
             </p>
           </div>
-
           <div class="grid md:grid-cols-2 gap-6">
             <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
               <h3 class="text-xl font-semibold">Gap analysis</h3>
@@ -238,7 +241,7 @@
             </article>
             <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
               <h3 class="text-xl font-semibold">Curriculum design</h3>
-              <p class="mt-3 text-slate-600 leading-7">Select relevant domains and competencies, define learning outcomes, and match teaching and assessment methods to Bloom’s levels.</p>
+              <p class="mt-3 text-slate-600 leading-7">Select relevant domains and competencies, define learning outcomes, and match teaching and assessment methods to Bloom's levels.</p>
             </article>
             <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
               <h3 class="text-xl font-semibold">Module mapping</h3>
@@ -280,28 +283,28 @@
           <a href="https://competencies-wcs.streamlit.app/" target="_blank" rel="noreferrer" class="group rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200 hover:shadow-md transition">
             <div class="flex items-center justify-between">
               <h3 class="text-lg font-semibold">Competency app</h3>
-              <span aria-hidden="true">↗</span>
+              <span aria-hidden="true">&nearr;</span>
             </div>
             <p class="mt-3 text-slate-600 leading-7">Browse topics and competencies through the digital interface and support structured reflection.</p>
           </a>
-          <a href="https://github.com/monicaiabrudan/competencies" target="_blank" rel="noreferrer" class="group rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200 hover:shadow-md transition">
+          <a href="https://github.com/WCSCourses/PGCF" target="_blank" rel="noreferrer" class="group rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200 hover:shadow-md transition">
             <div class="flex items-center justify-between">
               <h3 class="text-lg font-semibold">Code repository</h3>
-              <span aria-hidden="true">↗</span>
+              <span aria-hidden="true">&nearr;</span>
             </div>
-            <p class="mt-3 text-slate-600 leading-7">Access the underlying implementation resources and project code related to the competencies tools.</p>
+            <p class="mt-3 text-slate-600 leading-7">Access the source code, competency CSV file, requirements file, and implementation resources.</p>
           </a>
           <a href="https://wcscourses.github.io/PGCF/" target="_blank" rel="noreferrer" class="group rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200 hover:shadow-md transition">
             <div class="flex items-center justify-between">
               <h3 class="text-lg font-semibold">Framework website</h3>
-              <span aria-hidden="true">↗</span>
+              <span aria-hidden="true">&nearr;</span>
             </div>
             <p class="mt-3 text-slate-600 leading-7">A public-facing home for the framework, its description, and related implementation materials.</p>
           </a>
           <a href="https://zenodo.org/records/15675982" target="_blank" rel="noreferrer" class="group rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200 hover:shadow-md transition">
             <div class="flex items-center justify-between">
               <h3 class="text-lg font-semibold">Supporting record</h3>
-              <span aria-hidden="true">↗</span>
+              <span aria-hidden="true">&nearr;</span>
             </div>
             <p class="mt-3 text-slate-600 leading-7">Reference material connected to the wider T3Connect work that informed development of the framework.</p>
           </a>
@@ -309,7 +312,151 @@
       </div>
     </section>
 
-    <section class="py-20">
+    <section id="implement" class="py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 items-start">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.16em] text-cyan-700">Implementation guide</p>
+            <h2 class="mt-3 text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">How another institution can implement the same model</h2>
+            <p class="mt-4 text-lg text-slate-600 leading-8">
+              This example uses three main parts: GitHub to store the open source code, Streamlit to run the public web app, and Google Cloud Storage to keep submitted competency self-assessment responses in a private institutional bucket.
+            </p>
+            <div class="mt-6 rounded-3xl bg-cyan-50 p-6 ring-1 ring-cyan-100">
+              <h3 class="font-semibold text-cyan-900">Plain-language explanation</h3>
+              <p class="mt-3 text-cyan-950 leading-7">
+                The code is open so that others can reuse it, but the data and credentials are private. Participants use the Streamlit website, and when they submit their assessment, the app saves the response in a controlled Google Cloud bucket. Access is limited to authorised institutional staff.
+              </p>
+            </div>
+          </div>
+
+          <div class="rounded-3xl bg-slate-900 p-6 lg:p-8 text-white shadow-xl">
+            <p class="text-sm uppercase tracking-[0.16em] text-cyan-300">What happens on submit</p>
+            <ol class="mt-6 space-y-4 text-sm">
+              <li class="rounded-2xl bg-white/10 p-4 ring-1 ring-white/10"><span class="font-semibold text-white">1. Participant's browser:</span> The participant completes the self-assessment in the Streamlit website.</li>
+              <li class="rounded-2xl bg-white/10 p-4 ring-1 ring-white/10"><span class="font-semibold text-white">2. Streamlit app:</span> The app turns the responses into a structured CSV file.</li>
+              <li class="rounded-2xl bg-white/10 p-4 ring-1 ring-white/10"><span class="font-semibold text-white">3. Streamlit secrets:</span> The private Google Cloud credential is stored in the app settings, not in the public GitHub code and not in the participant's browser.</li>
+              <li class="rounded-2xl bg-white/10 p-4 ring-1 ring-white/10"><span class="font-semibold text-white">4. Google Cloud Storage:</span> The response file is uploaded to a private bucket controlled by the institution.</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="mt-14 grid lg:grid-cols-2 gap-6">
+          <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+            <div class="text-sm font-semibold text-cyan-700">Step 1</div>
+            <h3 class="mt-2 text-xl font-semibold text-slate-900">Copy or fork the GitHub repository</h3>
+            <p class="mt-3 text-slate-600 leading-7">Start from the PGCF repository. It contains the main app file, the competency CSV file, and a <code class="rounded bg-slate-100 px-1 py-0.5">requirements.txt</code> file listing the Python packages needed by the app, including Streamlit, pandas, and Google Cloud Storage.</p>
+          </article>
+
+          <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+            <div class="text-sm font-semibold text-cyan-700">Step 2</div>
+            <h3 class="mt-2 text-xl font-semibold text-slate-900">Adapt the competency framework</h3>
+            <p class="mt-3 text-slate-600 leading-7">Replace or edit the competency CSV file with the institution's own competency framework. The app reads the content from <code class="rounded bg-slate-100 px-1 py-0.5">PGCF.csv</code>, then displays the domains, topics, and levels in the Streamlit interface.</p>
+          </article>
+
+          <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+            <div class="text-sm font-semibold text-cyan-700">Step 3</div>
+            <h3 class="mt-2 text-xl font-semibold text-slate-900">Create a private Google Cloud Storage bucket</h3>
+            <p class="mt-3 text-slate-600 leading-7">Create a Google Cloud project and a private bucket for assessment responses. For simpler access control, enable uniform bucket-level access so permissions are managed through IAM rather than object-level ACLs.</p>
+            <a class="mt-4 inline-flex text-sm font-semibold text-cyan-700 hover:text-cyan-900" href="https://docs.cloud.google.com/storage/docs/uniform-bucket-level-access" target="_blank" rel="noreferrer">Google Cloud guide: uniform bucket-level access &rarr;</a>
+          </article>
+
+          <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+            <div class="text-sm font-semibold text-cyan-700">Step 4</div>
+            <h3 class="mt-2 text-xl font-semibold text-slate-900">Create a service account for the app</h3>
+            <p class="mt-3 text-slate-600 leading-7">The Streamlit app needs a Google Cloud identity that can upload files to the bucket. For a write-only submission workflow, grant the service account the Storage Object Creator role, <code class="rounded bg-slate-100 px-1 py-0.5">roles/storage.objectCreator</code>, on the bucket.</p>
+            <a class="mt-4 inline-flex text-sm font-semibold text-cyan-700 hover:text-cyan-900" href="https://docs.cloud.google.com/storage/docs/access-control/iam-roles" target="_blank" rel="noreferrer">Google Cloud guide: Cloud Storage IAM roles &rarr;</a>
+          </article>
+
+          <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200 lg:col-span-2">
+            <div class="text-sm font-semibold text-cyan-700">Step 5</div>
+            <h3 class="mt-2 text-xl font-semibold text-slate-900">Store credentials as secrets, not in GitHub</h3>
+            <p class="mt-3 text-slate-600 leading-7">The service account credential should be stored in Streamlit secrets. It should not be committed to the repository. In Streamlit Community Cloud, add secrets through the app settings.</p>
+            <div class="mt-5 grid lg:grid-cols-[1fr_0.8fr] gap-6 items-start">
+              <pre class="rounded-2xl bg-slate-900 p-5 text-sm text-slate-100 overflow-x-auto"><code>[gcp]
+bucket_name = "your-private-bucket-name"
+service_account_json = """{
+  "type": "service_account",
+  "project_id": "your-project-id",
+  "...": "..."
+}"""</code></pre>
+              <div class="rounded-2xl bg-slate-50 p-5 ring-1 ring-slate-200">
+                <h4 class="font-semibold text-slate-900">Why this matters</h4>
+                <p class="mt-2 text-sm text-slate-600 leading-6">GitHub contains the reusable recipe for the app. Streamlit secrets contain the private credential that allows the deployed app to write to the institution's bucket.</p>
+                <div class="mt-4 flex flex-col gap-2 text-sm font-semibold">
+                  <a class="text-cyan-700 hover:text-cyan-900" href="https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/secrets-management" target="_blank" rel="noreferrer">Streamlit guide: secrets management &rarr;</a>
+                  <a class="text-cyan-700 hover:text-cyan-900" href="https://docs.cloud.google.com/iam/docs/best-practices-for-managing-service-account-keys" target="_blank" rel="noreferrer">Google Cloud guide: service account key practices &rarr;</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+            <div class="text-sm font-semibold text-cyan-700">Step 6</div>
+            <h3 class="mt-2 text-xl font-semibold text-slate-900">Deploy the app</h3>
+            <p class="mt-3 text-slate-600 leading-7">In Streamlit Community Cloud, create an app from the GitHub repository, select the main Python file, add the required secrets in the app settings, and deploy.</p>
+            <a class="mt-4 inline-flex text-sm font-semibold text-cyan-700 hover:text-cyan-900" href="https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/deploy" target="_blank" rel="noreferrer">Streamlit guide: deploy your app &rarr;</a>
+          </article>
+
+          <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+            <div class="text-sm font-semibold text-cyan-700">Step 7</div>
+            <h3 class="mt-2 text-xl font-semibold text-slate-900">Test the full submission process</h3>
+            <p class="mt-3 text-slate-600 leading-7">Submit a test response, confirm that the file appears in the Google Cloud Storage bucket, and confirm that only authorised staff can access the stored responses.</p>
+          </article>
+        </div>
+
+        <div class="mt-16 border-t border-slate-200 pt-14">
+          <div class="grid lg:grid-cols-[0.8fr_1.2fr] gap-10 items-start">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-[0.16em] text-cyan-700">Security and privacy</p>
+              <h2 class="mt-3 text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">Points to include before an institution launches its own version</h2>
+              <p class="mt-4 text-lg text-slate-600 leading-8">
+                The public website should explain that the code is open, but the assessment data and cloud credentials are private. Each institution should also make local decisions about identity, consent, access, retention, and data governance.
+              </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+              <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+                <h3 class="text-xl font-semibold">Use IDs rather than names where possible</h3>
+                <p class="mt-3 text-slate-600 leading-7">Names, job titles, and role descriptions can make a dataset personally identifiable. Participant IDs may be safer when individual names are not necessary.</p>
+              </article>
+              <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+                <h3 class="text-xl font-semibold">Do not reveal bucket details to users</h3>
+                <p class="mt-3 text-slate-600 leading-7">A public-facing confirmation message should say that the response was submitted securely. It should not show the bucket path or internal storage details.</p>
+              </article>
+              <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+                <h3 class="text-xl font-semibold">Enable secret-protection practices in GitHub</h3>
+                <p class="mt-3 text-slate-600 leading-7">Secret scanning and push protection help prevent credentials, tokens, and private keys from being accidentally committed to a repository.</p>
+                <a class="mt-4 inline-flex text-sm font-semibold text-cyan-700 hover:text-cyan-900" href="https://docs.github.com/en/code-security/concepts/secret-security/about-push-protection" target="_blank" rel="noreferrer">GitHub guide: push protection &rarr;</a>
+              </article>
+              <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+                <h3 class="text-xl font-semibold">Document data governance</h3>
+                <p class="mt-3 text-slate-600 leading-7">Before launch, decide who owns the data, who can access it, how long responses are kept, whether names are collected, and what participants are told before they submit.</p>
+                <a class="mt-4 inline-flex text-sm font-semibold text-cyan-700 hover:text-cyan-900" href="https://docs.cloud.google.com/docs/security/encryption/default-encryption" target="_blank" rel="noreferrer">Google Cloud guide: default encryption at rest &rarr;</a>
+              </article>
+            </div>
+          </div>
+
+          <article class="mt-8 rounded-3xl bg-slate-900 p-6 lg:p-8 text-white shadow-xl">
+            <div class="grid lg:grid-cols-[0.8fr_1.2fr] gap-8 items-start">
+              <div>
+                <h3 class="text-2xl font-bold">Avoid duplicate file names</h3>
+                <p class="mt-3 text-slate-300 leading-7">Do not use only the participant's name or ID as the filename. Add a timestamp and a random ID so repeated submissions cannot overwrite each other.</p>
+              </div>
+              <pre class="rounded-2xl bg-black/40 p-5 text-sm text-slate-100 overflow-x-auto ring-1 ring-white/10"><code>from datetime import datetime, timezone
+from uuid import uuid4
+
+timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+file_name = f"responses/{timestamp}_{uuid4().hex}.csv"
+
+upload_to_gcs_from_bytes(csv_bytes, file_name)
+st.success("Your response has been submitted securely.")</code></pre>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-slate-50 border-t border-slate-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="rounded-[2rem] bg-gradient-to-r from-cyan-700 to-sky-800 p-10 text-white shadow-xl">
           <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 items-center">
@@ -322,6 +469,7 @@
             </div>
             <div class="flex flex-wrap gap-3 lg:justify-end">
               <a href="https://competencies-wcs.streamlit.app/" target="_blank" rel="noreferrer" class="rounded-2xl bg-white px-5 py-3 font-medium text-slate-900 hover:bg-slate-100 transition">Open the app</a>
+              <a href="#implement" class="rounded-2xl border border-white/40 px-5 py-3 font-medium text-white hover:bg-white/10 transition">Implementation guide</a>
               <a href="#top" class="rounded-2xl border border-white/40 px-5 py-3 font-medium text-white hover:bg-white/10 transition">Back to top</a>
             </div>
           </div>
@@ -333,18 +481,23 @@
   <footer class="border-t border-slate-200 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row gap-3 md:items-center md:justify-between text-sm text-slate-500">
       <p>Pathogen Genomics Competency Framework overview page.</p>
-      <p>Built as a single-page resource for presenting the framework, its structure, and its toolkit.</p>
+      <p>Built as a single-page resource for presenting the framework, its structure, toolkit, and implementation model.</p>
     </div>
   </footer>
 
   <script>
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
+
     menuBtn.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
     });
 
-    const sections = ['overview', 'domains', 'use', 'toolkit'];
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+
+    const sections = ['overview', 'domains', 'use', 'toolkit', 'implement'];
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         const id = entry.target.id;
